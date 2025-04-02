@@ -1,0 +1,191 @@
+/* Stili generali */
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #444;
+  color: white;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 25px 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.logo {
+  margin-right: 40px;
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.search-bar input {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+/* Contenuto in evidenza */
+.random-movie {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+    height: 100vh;
+}
+
+.random-movie img {
+  width: 1000px;
+  max-width: 1200px;
+  border-radius: 10px;
+  height: 800px;
+  object-fit: fill;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.random-movie h3 {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.random-movie p {
+  font-size: 19px;
+  font-weight: bold;
+  color: white;
+}
+
+.random-movie button {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.random-movie button:hover {
+  background-color: darkred;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: -200px; /* Nasconde il menu inizialmente */
+  bottom: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s ease,width 0.3s ease; /* Aggiunge una transizione fluida */
+  overflow-y: hidden;
+}
+
+.sidebar:hover {
+left: 0;
+width: 250px;
+}
+
+.sidebar .category-label {
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: rotate(270deg);
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.sidebar:hover .category-label {
+  opacity: 0;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+ul {
+  list-style-type: none;
+  /* Rimuovi i puntini di elenco */
+  padding: 0;
+  height: 100%;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+ul::-webkit-scrollbar {
+  width: 0px;
+  /* Imposta la larghezza della scrollbar a 0px */
+  background: transparent;
+  /* Rende il background trasparente */
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: transparent;
+  /* Rende il "thumb" della scrollbar trasparente */
+}
+
+ul::-webkit-scrollbar-track {
+  background: transparent;
+  /* Rende il "track" della scrollbar trasparente */
+}
+
+li {
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  /* Cursore a mano quando si passa sopra un genere */
+  border-radius: 4px;
+  /* Aggiungi un bordo arrotondato per gli elementi */
+  font-size: 25px;
+}
+
+li:hover {
+  background-color: #555;
+  /* Cambia colore di sfondo al passaggio del mouse */
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
+
+.sidebar a:hover {
+  color: #ddd;
+}
