@@ -1,4 +1,4 @@
-<div class="container">
+<body>
 
   <!-- Navbar -->
   <nav class="navbar">
@@ -11,8 +11,14 @@
   </nav>
 
   <!-- Contenuto principale -->
-  <div class="featured-content">
-    <h1>Film in Evidenza</h1>
+ <div class="random-movie">
+    <div *ngIf="randomMovie">
+     <img
+       [src]="'https://image.tmdb.org/t/p/w500' + randomMovie.poster_path"
+        alt="Copertina del film"
+        class="random-movie-poster" />
+      <h3>{{ randomMovie.title }}</h3>
+    </div>
     <p>Guarda ora il miglior film consigliato per te!</p>
     <button>Guarda Ora</button>
   </div>
@@ -27,4 +33,4 @@
     </ul>
   </div>
 
-</div>
+</body>

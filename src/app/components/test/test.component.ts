@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TestComponent implements OnInit {
   genres: any[] = [];
+  randomMovie: any;
 
   constructor(private apiService: apiService) {}
 
@@ -21,6 +22,16 @@ export class TestComponent implements OnInit {
         this.genres = data.genres;
       },
       error: (err) => console.error('Errore nel recupero dei generi', error),
+    });
+
+    this.apiService.getTrendingMovies().subscribe({
+      next: (data) => {
+        // Seleziona un film random dalla lista dei film di tendenza
+        const randomIndex = Math.floor(Math.random() * data.results.length);
+        this.randomMovie = data.results[randomIndex];
+      },
+      error: (err) =>
+        console.error('Errore nel recupero dei film di tendenza', err),
     });
   }
 
