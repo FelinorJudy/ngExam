@@ -1,7 +1,30 @@
-<div class="sidebar">
-  <ul>
+<div class="container">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="search-bar">
+      <input type="text" placeholder="Cerca film..." />
+    </div>
+    <div class="logo">
+      <img src="https://e1.pngegg.com/pngimages/10/90/png-clipart-clay-os-6-a-macos-icon-netflix-netflix-logo.png" alt="Netflix Logo">
+    </div>
+  </nav>
+
+  <!-- Contenuto principale -->
+  <div class="featured-content">
+    <h1>Film in Evidenza</h1>
+    <p>Guarda ora il miglior film consigliato per te!</p>
+    <button>Guarda Ora</button>
+  </div>
+
+  <!--SideBar-->
+  <div class="sidebar">
+      <div class="category-label">Categorie</div>
+    <ul>
     <li *ngFor="let genre of genres" (click)="onGenreClick(genre.id)">
-      {{ genre.name }}
+      <a href="destinationPage">{{genre.name }} </a>
     </li>
-  </ul>
+    </ul>
+  </div>
+
 </div>
