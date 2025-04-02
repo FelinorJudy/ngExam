@@ -24,13 +24,15 @@
   </div>
 
   <!--SideBar-->
-  <div class="sidebar">
-      <div class="category-label">Categorie</div>
+<div class="sidebar">
     <ul>
-    <li *ngFor="let genre of genres" (click)="onGenreClick(genre.id)">
-      <a href="destinationPage">{{genre.name }} </a>
-    </li>
+       @for(genre of genres; track genre.id) {
+        <li>
+         <a [routerLink]="['/movies', genre.id]" > {{ genre.name }} </a>
+        </li>
+      }
     </ul>
-  </div>
+</div>
 
 </body>
+

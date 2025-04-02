@@ -1,0 +1,10 @@
+<div #scrollContainer class ="destination_image" >
+  <ul>
+    @for(movie of movies; track movie.id) {
+    <li>
+      <a [routerLink]="['/movie', movie.id]"> {{ movie.title }} </a>
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="">
+    </li>
+    }
+  </ul>
+</div>

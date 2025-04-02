@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { apiService } from '../../services/api.service';
+import { RouterLink, RouterModule } from '@angular/router';
 import { error } from 'console';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-test',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   standalone: true,
   templateUrl: './test.component.html',
   styleUrl: './test.component.css',
@@ -39,4 +40,5 @@ export class TestComponent implements OnInit {
   onGenreClick(genreId: number) {
     console.log('Genere selezionato:', genreId);
   }
+
 }
