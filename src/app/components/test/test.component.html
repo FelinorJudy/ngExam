@@ -1,5 +1,10 @@
-<div>
-    @for (genre of genres; track genre.id) {
-        {{ genre.name }}
-    }
+<div class="sidebar">
+    <ul>
+       @for(genre of genres; track genre.id) {
+        <li>
+            <a href="destinationPage">{{ genre.name }}</a>
+        </li>
+      }
+    </ul>
 </div>
+  

@@ -20,5 +20,10 @@ export class TestComponent implements OnInit{
         },
         error => console.error("fanculo", error)
       )
+  } 
+  
+  onGenreClick(genreId: number) {
+    console.log("Genere selezionato:", genreId);
   }
+
 }
