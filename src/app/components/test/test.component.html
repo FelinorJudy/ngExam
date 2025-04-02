@@ -1,3 +1,29 @@
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="search-bar">
+      <input type="text" placeholder="Cerca film..." />
+    </div>
+    <div class="logo">
+      <img src="https://e1.pngegg.com/pngimages/10/90/png-clipart-clay-os-6-a-macos-icon-netflix-netflix-logo.png" alt="Netflix Logo">
+    </div>
+  </nav>
+
+  <!-- Contenuto principale -->
+ <div class="random-movie">
+    <div *ngIf="randomMovie">
+     <img
+       [src]="'https://image.tmdb.org/t/p/w500' + randomMovie.poster_path"
+        alt="Copertina del film"
+        class="random-movie-poster" />
+      <h3>{{ randomMovie.title }}</h3>
+    </div>
+    <p>Guarda ora il miglior film consigliato per te!</p>
+    <button>Guarda Ora</button>
+  </div>
+
+  <!--SideBar-->
 <div class="sidebar">
     <ul>
        @for(genre of genres; track genre.id) {
@@ -7,4 +33,6 @@
       }
     </ul>
 </div>
-  
+
+</body>
+
