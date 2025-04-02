@@ -1,5 +1,7 @@
-<div>
-    @for (genre of genres; track genre.id) {
-        {{ genre.name }}
-    }
+<div class="sidebar">
+  <ul>
+    <li *ngFor="let genre of genres" (click)="onGenreClick(genre.id)">
+      {{ genre.name }}
+    </li>
+  </ul>
 </div>

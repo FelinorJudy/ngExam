@@ -1,0 +1,34 @@
+.sidebar {
+  width: 200px;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* Allinea gli elementi in verticale */
+}
+
+ul {
+  list-style-type: none;
+  /* Rimuovi i puntini di elenco */
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  /* Cursore a mano quando si passa sopra un genere */
+  border-radius: 4px;
+  /* Aggiungi un bordo arrotondato per gli elementi */
+  font-size: 25px;
+}
+
+li:hover {
+  background-color: #555;
+  /* Cambia colore di sfondo al passaggio del mouse */
+}
