@@ -2,7 +2,7 @@
     <ul>
        @for(genre of genres; track genre.id) {
         <li>
-            <a href="destinationPage">{{ genre.name }}</a>
+         <a [routerLink]="['/movies', genre.id]" > {{ genre.name }} </a>
         </li>
       }
     </ul>
