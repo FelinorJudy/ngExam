@@ -13,6 +13,7 @@ export class DestinationComponent implements OnInit {
   @Input() genreId!: string
   movies: any = []
   currentPage: number = 1
+  isLoading: boolean = false
 
   constructor(private apiService: apiService) { }
 
@@ -21,19 +22,27 @@ export class DestinationComponent implements OnInit {
   }
 
   loadMovies(): void {
-    this.apiService.getMoviesByGenre(this.genreId, String(this.currentPage)).subscribe(
-      data => {
-        this.movies = [...this.movies, ...data.results]
-      })
+    console.log('Loading movies...');
+    if (!this.isLoading) {
+      this.isLoading = true
+      this.apiService.getMoviesByGenre(this.genreId, String(this.currentPage)).subscribe(
+        data => {
+          this.movies.push(...data.results);
+        },
+      );
+    }
   }
 
   @HostListener('window:scroll')
   onWindowsScroll() {
-    console.log('sono nello scroll')
-    this.currentPage += 1
-    console.log(this.currentPage)
-    this.loadMovies()
+    console.log('Scroll event triggered!');
+    const scrollOffset = 200;
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - scrollOffset) {
+      this.apiService.getMoviesByGenre(this.genreId, String(this.currentPage)).subscribe(
+        data => {
+          this.movies.push(...data.results);
+          this.currentPage++;
+        })
+    }
   }
 }
-
-
