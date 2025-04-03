@@ -31,10 +31,12 @@ export class apiService {
     );
   }
 
-  getInfoFromMovie(movieId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/movie/${movieId}?language=en-US`, {
-      headers: this.headers,
-    });
-  }
+    getInfoFromMovie(movieId: string): Observable<any> {
+        return this.http.get(`${this.apiUrl}/movie/${movieId}?language=en-US`, {headers: this.headers})
+    }
+
+    getMovieByTitle(title: string): Observable<any> {
+        return this.http.get(`${this.apiUrl}/search/movie?query=${title}`, {headers: this.headers})
+    }
 }
 
