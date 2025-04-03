@@ -22,7 +22,7 @@ export class TestComponent implements OnInit {
       next: (data) => {
         this.genres = data.genres;
       },
-      error: (err) => console.error('Errore nel recupero dei generi', error),
+      error: (err) => console.log('Errore nel recupero dei generi'),
     });
 
     this.apiService.getTrendingMovies().subscribe({
@@ -32,7 +32,7 @@ export class TestComponent implements OnInit {
         this.randomMovie = data.results[randomIndex];
       },
       error: (err) =>
-        console.error('Errore nel recupero dei film di tendenza', err),
+        console.log('Errore nel recupero dei film di tendenza'),
     });
   }
 
