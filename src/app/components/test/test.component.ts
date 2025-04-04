@@ -17,6 +17,7 @@ export class TestComponent implements OnInit {
   randomMovie: any;
   search: string = '';
   searchResults: any[] = [];
+  randomMovieId: any;
 
   constructor(private apiService: apiService) {}
 
@@ -33,10 +34,12 @@ export class TestComponent implements OnInit {
         // Seleziona un film random dalla lista dei film di tendenza
         const randomIndex = Math.floor(Math.random() * data.results.length);
         this.randomMovie = data.results[randomIndex];
+        this.randomMovieId = this.randomMovie.id;
       },
       error: (err) =>
         console.log('Errore nel recupero dei film di tendenza'),
     });
+
   }
 
 
@@ -54,5 +57,8 @@ export class TestComponent implements OnInit {
       error: (err) => console.log('Errore nella ricerca del film'),
     });
   }
+
+
+
 }
 

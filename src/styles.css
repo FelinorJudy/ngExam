@@ -5,3 +5,9 @@ body,p {
 }
 
 
+body,
+html,
+div
+{
+  height: 100%;
+}
