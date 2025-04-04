@@ -1,9 +1,11 @@
-<nav class="navbar">
-  <div class="search-container">
-    <input type="text" placeholder="Cerca un film..." [(ngModel)]="search" (input)="onSearch()" />
-    
+<div class=" body">
+
+<nav class="navbar navbar-dark bg-dark sticky-top d-flex align-items-center justify-content-between py-3 px-2">
+  <div class="search-container position-relative w-100 w-md-75 w-lg-50 mx-auto">
+    <input type="text" class="form-control" placeholder="Cerca un film..." [(ngModel)]="search" (input)="onSearch()" />
+
     @if (searchResults.length > 0) {
-      <div class="search-results">
+      <div class="search-results position-absolute bg-white border rounded shadow-sm mt-1 p-2 w-100" style="max-width:400px;">
         <ul>
           @for (movie of searchResults; track movie.id) {
             <li>
@@ -15,23 +17,27 @@
     }
   </div>
 
-  <div class="logo">
-    <img src="https://e1.pngegg.com/pngimages/10/90/png-clipart-clay-os-6-a-macos-icon-netflix-netflix-logo.png" alt="Netflix Logo">
+  <button [routerLink]="['/movie',randomMovieId]" class="preferiti btn " >Preferiti</button>
+  <button [routerLink]="['/movie',randomMovieId]" class="visti btn " >Già visti</button>
+
+  <div class="logo d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+     <img src="https://e1.pngegg.com/pngimages/10/90/png-clipart-clay-os-6-a-macos-icon-netflix-netflix-logo.png" alt="Netflix Logo" class="object-fit-cover"/>
   </div>
 </nav>
 <!-- Contenuto principale -->
-<div class="random-movie">
+<div class="random-movie ">
   <div *ngIf="randomMovie">
     <img [src]="'https://image.tmdb.org/t/p/w500' + randomMovie.poster_path" alt="Copertina del film"
-      class="random-movie-poster" />
-    <h3>{{ randomMovie.title }}</h3>
+             class="img-fluid  rounded shadow" style="max-height: 50vh; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);" />
+    <h3 class="mb-2 fs-3">{{ randomMovie.title }}</h3>
   </div>
-  <p>Guarda ora il miglior film consigliato per te!</p>
-  <button>Guarda Ora</button>
+  <p class="fw-bold fs-5 text-white">Guarda ora il miglior film consigliato per te!</p>
+  <button [routerLink]="['/movie',randomMovieId]" class="btn btn-danger mt-2" >Guarda Ora</button>
 </div>
 
 <!--SideBar-->
-<div class="sidebar">
+<div class="sidebar ">
+  <p class="category-label">Categorie</p>
   <ul>
     @for(genre of genres; track genre.id) {
     <li>
@@ -39,4 +45,5 @@
     </li>
     }
   </ul>
+</div>
 </div>
