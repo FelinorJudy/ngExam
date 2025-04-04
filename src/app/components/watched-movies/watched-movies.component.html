@@ -1,0 +1,20 @@
+<div class="watched-movies">
+    <h2>🎬 Film già visti</h2>
+    <div *ngIf="watchedMovies.length === 0">
+      <p>Non hai ancora segnato nessun film come visto.</p>
+    </div>
+    <div *ngFor="let movie of watchedMovies" class="movie-item">
+      <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" alt="{{ movie.title }}">
+      
+      <h3>{{ movie.title }}</h3>
+      <button (click)="removeFromWatched(movie.id)">❌ Rimuovi</button>
+      <div *ngIf="watchedMovies.length > 0">
+        <!-- Codice per mostrare i film -->
+      </div>
+      <div *ngIf="watchedMovies.length === 0">
+        Nessun film visto.
+      </div>
+      
+    </div>
+  </div> 
+  

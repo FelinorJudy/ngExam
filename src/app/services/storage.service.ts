@@ -1,32 +1,25 @@
 import { Injectable } from '@angular/core';
 
-
 @Injectable({
-    providedIn: 'root'
-  })
+  providedIn: 'root'
+})
+export class StorageService {
+  private storageKey = 'filmVisti';
 
+  constructor() {}
 
-  export class StorageService {
-    private favoritesKey = 'favorites';
-    private watchedKey = 'watched';
-  
-    addToFavorites(movie: any) {
-      let favorites = this.getFavorites();
-      favorites.push(movie);
-      localStorage.setItem(this.favoritesKey, JSON.stringify(favorites));
-    }
-  
-    getFavorites(): any[] {
-      return JSON.parse(localStorage.getItem(this.favoritesKey) || '[]');
-    }
-  
-    addToWatched(movie: any) {
-      let watched = this.getWatched();
-      watched.push(movie);
-      localStorage.setItem(this.watchedKey, JSON.stringify(watched));
-    }
-  
-    getWatched(): any[] {
-      return JSON.parse(localStorage.getItem(this.watchedKey) || '[]');
-    }
+  getFilmVisti(): Record<string, boolean> {
+    const filmVisti = localStorage.getItem(this.storageKey);
+    return filmVisti ? JSON.parse(filmVisti) : {};
   }
+
+  toggleFilmVisto(movieId: string): void {
+    const filmVisti = this.getFilmVisti();
+    filmVisti[movieId] = !filmVisti[movieId]; // Cambia stato (visto/non visto)
+    localStorage.setItem(this.storageKey, JSON.stringify(filmVisti));
+  }
+
+  getWatchedMovies(): string[] {
+    return Object.keys(this.getFilmVisti()).filter(movieId => this.getFilmVisti()[movieId]);
+  }
+}
