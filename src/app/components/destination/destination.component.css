@@ -1,5 +1,51 @@
- .destination_image img {
-     max-height: 200px;
-     width: auto;
-     object-fit: contain;
+/*Corpo principare*/
+ .destination_image {
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+ }
+/* Lista */
+ ul {
+   display: flex;
+   flex-wrap: wrap;
+  justify-content: center;
+ }
+
+ li {
+   display: flex;
+   flex-direction: column;
+   padding: 5%;
+ }
+
+li img {
+  max-height: 700px;
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+}
+
+/* Link stile bottone */
+ li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: 2px solid #555;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 4%;
+  font-size: large;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6),
+        0 0 6px rgba(255, 255, 255, 0.05);
+ }
+
+ li a:hover {
+   background-color: #555;
+   color: white;
+   transform: scale(1.05);
  }
