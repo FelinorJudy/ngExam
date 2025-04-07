@@ -1,4 +1,5 @@
 /*Corpo principare*/
+
  .destination_image {
    display: flex;
    flex-direction: column;
@@ -6,15 +7,17 @@
  }
 /* Lista */
  ul {
-   display: flex;
-   flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
  }
 
  li {
-   display: flex;
-   flex-direction: column;
-   padding: 5%;
+    width: 30%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
  }
 
 li p {
@@ -33,15 +36,16 @@ li img {
   width: auto;
   object-fit: contain;
   max-width: 100%;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
   border-radius: 10px;
 }
 
 /* Link stile */
  li a {
+  overflow: hidden;
+  display: block;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6),
-        0 0 10px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
   border-radius: 10px;
  }
 
