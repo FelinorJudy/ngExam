@@ -22,9 +22,8 @@
 .random-movie img {
   max-height: 50vh;
   border-radius: 10px;
-
   object-fit: fill;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
 }
 
 .random-movie h3 {
