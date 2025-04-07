@@ -1,10 +1,15 @@
 <div class="movie-details">
     <h2>{{ tagline }}</h2>
     <img [src]="photoUrl" alt="Movie Poster">
-  
+
     <!-- Bottone per segnare il film come visto -->
     <button (click)="toggleVisto()">
       {{ visto ? '✅ Già visto' : '👀 Segna come visto' }}
     </button>
+      <p>{{title}} </p>
+      <p>{{overview}} </p>
+      <p>{{release_date}} </p>
+      <p>{{runtime}} minuti</p>
+      <p>{{vote_average}} </p>
+
   </div>
-  
