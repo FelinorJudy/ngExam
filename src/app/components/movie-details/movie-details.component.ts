@@ -1,35 +1,46 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { apiService } from '../../services/api.service';
 import { StorageService } from '../../services/storage.service';
+import { NavbarComponent } from "../../navbar/navbar.component";
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
-  styleUrl: './movie-details.component.css'
+  styleUrl: './movie-details.component.css',
+  imports: [NavbarComponent]
 })
 export class MovieDetailsComponent implements OnInit {
-  @Input() movieId!: string;
   visto: boolean = false;
-
   tagline: string = '';
   photoUrl: string = '';
+  param: string | null = '';
 
-  constructor(private apiService: apiService, private storageService: StorageService) {}
+  constructor(private apiService: apiService, private storageService: StorageService,private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // Controlla se il film è già stato visto
-    this.visto = this.storageService.getFilmVisti()[this.movieId] || false;
-
-    // Ottieni le informazioni sul film
-    this.apiService.getInfoFromMovie(this.movieId).subscribe(data => {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+     this.param = params.get('movieId');
+      if (this.param) {
+    this.visto = this.storageService.getFilmVisti()[this.param] || false;
+    this.apiService.getInfoFromMovie(this.param).subscribe(data => {
       this.tagline = data.tagline;
       this.photoUrl = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
     });
+   }});
+ }
+
+
+  ngOnChange(){
+    window.location.reload();
   }
 
   // Funzione per segnare il film come "già visto"
   toggleVisto(): void {
-    this.storageService.toggleFilmVisto(this.movieId);
-    this.visto = !this.visto; // Aggiorna lo stato del pulsante
+    if(this.param){
+      this.storageService.toggleFilmVisto(this.param);
+      this.visto = !this.visto; // Aggiorna lo stato del pulsante 
+    }
   }
+
 }

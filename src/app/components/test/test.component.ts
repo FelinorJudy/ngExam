@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { apiService } from '../../services/api.service';
-import { RouterLink, RouterModule } from '@angular/router';
-import { error } from 'console';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from '../../navbar/navbar.component';
 
 @Component({
   selector: 'app-test',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, NavbarComponent],
   standalone: true,
   templateUrl: './test.component.html',
   styleUrl: './test.component.css',

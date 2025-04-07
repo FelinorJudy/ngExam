@@ -8,7 +8,7 @@
         <ul>
           @for (movie of searchResults; track movie.id) {
             <li>
-              <a [routerLink]="['/movie', movie.id]">{{ movie.title }}</a>
+              <a (click)="flushResults()" [routerLink]="['/movie', movie.id]">{{ movie.title }}</a>
             </li>
           }
         </ul>
