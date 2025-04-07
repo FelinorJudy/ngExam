@@ -8,7 +8,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
-  imports: [NavbarComponent]
 })
 export class MovieDetailsComponent implements OnInit {
   visto: boolean = false;
