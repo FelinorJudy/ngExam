@@ -25,4 +25,10 @@ export class NavbarComponent {
       error: (err) => console.log('Errore nella ricerca del film'),
     });
   }
+
+  flushResults(){
+    this.search = '';
+    this.searchResults = [];
+    console.log(this.search,this.searchResults,"topolino")
+  }
 }

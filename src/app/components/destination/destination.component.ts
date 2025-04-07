@@ -1,10 +1,11 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { apiService } from '../../services/api.service';
 import { RouterModule } from '@angular/router';
+import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-destination',
-  imports: [RouterModule],
+  imports: [RouterModule, NavbarComponent],
   standalone: true,
   templateUrl: './destination.component.html',
   styleUrl: './destination.component.css'
@@ -27,6 +28,7 @@ export class DestinationComponent implements OnInit {
       this.isLoading = true
       this.apiService.getMoviesByGenre(this.genreId, String(this.currentPage)).subscribe(
         data => {
+          this.isLoading = false
           this.movies.push(...data.results);
         },
       );
@@ -37,11 +39,13 @@ export class DestinationComponent implements OnInit {
   onWindowsScroll() {
     console.log('Scroll event triggered!');
     const scrollOffset = 200;
-    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - scrollOffset) {
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - scrollOffset && !this.isLoading) {
+      this.isLoading = true
+      this.currentPage++;
       this.apiService.getMoviesByGenre(this.genreId, String(this.currentPage)).subscribe(
         data => {
+          this.isLoading = false
           this.movies.push(...data.results);
-          this.currentPage++;
         })
     }
   }

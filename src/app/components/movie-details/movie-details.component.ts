@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { apiService } from '../../services/api.service';
 import { StorageService } from '../../services/storage.service';
+import { NavbarComponent } from "../../navbar/navbar.component";
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-details',
@@ -8,7 +10,6 @@ import { StorageService } from '../../services/storage.service';
   styleUrl: './movie-details.component.css',
 })
 export class MovieDetailsComponent implements OnInit {
-  @Input() movieId!: string;
   visto: boolean = false;
   overview: string = '';
   tagline: string = '';
@@ -41,7 +42,10 @@ export class MovieDetailsComponent implements OnInit {
 
   // Funzione per segnare il film come "già visto"
   toggleVisto(): void {
-    this.storageService.toggleFilmVisto(this.movieId);
-    this.visto = !this.visto; // Aggiorna lo stato del pulsante
+    if(this.param){
+      this.storageService.toggleFilmVisto(this.param);
+      this.visto = !this.visto; // Aggiorna lo stato del pulsante 
+    }
   }
+
 }
