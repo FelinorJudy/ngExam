@@ -1,0 +1,27 @@
+
+<nav class="navbar sticky-top d-flex align-items-center justify-content-between py-3 px-2">
+  <div class="search-container position-relative w-100 w-md-75 w-lg-50 mx-auto">
+    <input type="text" class="form-control" placeholder="Cerca un film..." [(ngModel)]="search" (input)="onSearch()" />
+
+    @if (searchResults.length > 0) {
+      <div class="search-results border rounded shadow-sm mt-1 p-2 w-100" style="max-width:400px;">
+        <ul>
+          @for (movie of searchResults; track movie.id) {
+            <li>
+              <a [routerLink]="['/movie', movie.id]">{{ movie.title }}</a>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+
+  <div class="button-group d-flex">
+  <button [routerLink]="['/watched']" class="preferiti btn " >Preferiti</button>
+  <button [routerLink]="['/watched']" class="visti btn " >Già visti</button>
+  </div>
+
+  <a [routerLink]="['/']" class="logo d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+     <img src="https://e1.pngegg.com/pngimages/10/90/png-clipart-clay-os-6-a-macos-icon-netflix-netflix-logo.png" alt="Netflix Logo" class="object-fit-cover"/>
+  </a>
+</nav>

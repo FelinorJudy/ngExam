@@ -1,13 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-body,p {
-  margin:0;
+/* Imposta lo sfondo globale */
+body {
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-
-body,
-html,
-div
-{
+/* Assicurati che l'elemento html occupi l'intera altezza */
+html {
   height: 100%;
 }
+
