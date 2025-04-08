@@ -73,12 +73,13 @@ p {
 
 .movie-details-buttons {
   display: flex;
-  max-width: 30%;
+  max-width: 40%;
   justify-content: space-between;
   margin-top: 1rem;
 
   button{
-    width: 40%;
+    width: 30%;
+    min-width: 160px;
     background-color: #e50914;
     color: white;
     border: none;
