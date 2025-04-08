@@ -1,25 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { apiService } from '../../services/api.service';
 import { StorageService } from '../../services/storage.service';
-import { NavbarComponent } from "../../navbar/navbar.component";
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap} from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
+  imports  : [CommonModule],
 })
 export class MovieDetailsComponent implements OnInit {
+  param: string | null = '';
   visto: boolean = false;
   favorite: boolean = false;
   overview: string = '';
   tagline: string = '';
-  photoUrl: string = '';
-  param: string | null = '';
   title: string = '';
   release_date: string = '';
   runtime: number = 0;
   vote_average: number = 0;
+  backdropUrl: string = '';
 
   constructor(
     private apiService: apiService,
@@ -37,12 +38,12 @@ export class MovieDetailsComponent implements OnInit {
         // Ottieni le informazioni sul film
         this.apiService.getInfoFromMovie(this.param).subscribe((data) => {
           this.tagline = data.tagline;
-          this.photoUrl = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
           this.overview = data.overview;
           this.title = data.title;
           this.release_date = data.release_data;
           this.runtime = data.runtime;
           this.vote_average = data.vote_average;
+          this.backdropUrl = `https://image.tmdb.org/t/p/original${data.backdrop_path}`;
         });
       }
     });
@@ -54,12 +55,20 @@ export class MovieDetailsComponent implements OnInit {
   }
 
 
-  // Funzione per segnare il film come "già visto"
+  // Funzione per segnare il film come già visto
   toggleVisto(): void {
     if (this.param) {
       this.storageService.toggleFilmVisto(this.param);
-      this.visto = !this.visto; // Aggiorna lo stato del pulsante
+      this.visto = !this.visto; // Aggiorna il pulsante
     }
+  }
+  getFontSize(title: string): string { // Così possiamo modificare la dimensione del font in base alla lunghezza del titolo
+    console.log('Title length: ' + title.length);   
+    const length = title.length;
+    if (length < 10) return '120px'; 
+    if (length < 20) return '100px'; 
+    if (length < 30) return '80px'; 
+    return '100px'; 
   }
   toggleFavorite(): void {
     if (this.param) {
@@ -67,5 +76,4 @@ export class MovieDetailsComponent implements OnInit {
       this.favorite = !this.favorite;
     }
   }
-
 }

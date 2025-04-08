@@ -6,10 +6,15 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  font-family: 'Oswald', sans-serif;
 }
 
 /* Assicurati che l'elemento html occupi l'intera altezza */
 html {
   height: 100%;
+}
+
+h1, h2 {
+  font-family: 'Bebas Neue', sans-serif;
 }
 

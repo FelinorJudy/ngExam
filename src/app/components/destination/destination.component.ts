@@ -5,7 +5,7 @@ import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-destination',
-  imports: [RouterModule, NavbarComponent],
+  imports: [RouterModule],
   standalone: true,
   templateUrl: './destination.component.html',
   styleUrl: './destination.component.css'
