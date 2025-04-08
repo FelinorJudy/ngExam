@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class MovieDetailsComponent implements OnInit {
   param: string | null = '';
   visto: boolean = false;
+  favorite: boolean = false;
   overview: string = '';
   tagline: string = '';
   title: string = '';
@@ -32,6 +33,7 @@ export class MovieDetailsComponent implements OnInit {
       this.param = params.get('movieId');
       if (this.param) {
         this.visto = this.storageService.getFilmVisti()[this.param] || false;
+        this.favorite = this.storageService.getFavoriteFilm()[this.param] || false;
 
         // Ottieni le informazioni sul film
         this.apiService.getInfoFromMovie(this.param).subscribe((data) => {
@@ -60,7 +62,6 @@ export class MovieDetailsComponent implements OnInit {
       this.visto = !this.visto; // Aggiorna il pulsante
     }
   }
-
   getFontSize(title: string): string { // Così possiamo modificare la dimensione del font in base alla lunghezza del titolo
     console.log('Title length: ' + title.length);   
     const length = title.length;
@@ -68,5 +69,11 @@ export class MovieDetailsComponent implements OnInit {
     if (length < 20) return '100px'; 
     if (length < 30) return '80px'; 
     return '100px'; 
+  }
+  toggleFavorite(): void {
+    if (this.param) {
+      this.storageService.toggleFavoriteFilm(this.param);
+      this.favorite = !this.favorite;
+    }
   }
 }
