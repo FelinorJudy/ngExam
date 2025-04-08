@@ -51,21 +51,21 @@ export class TestComponent implements OnInit {
 
   }
   onGenreClick(genreId: number) {
-        console.log('Genere selezionato:', genreId);
-      }
+    console.log('Genere selezionato:', genreId);
+  }
 
   onSearch() {
-        console.log('Ricerca:', this.search);
-        this.apiService.getMovieByTitle(this.search).subscribe({
-          next: (data) => {
-            console.log('Risultati della ricerca:', data.results);
-            this.searchResults = data.results;
-          },
-          error: (err) => console.log('Errore nella ricerca del film'),
-        });
-      }
+    console.log('Ricerca:', this.search);
+    this.apiService.getMovieByTitle(this.search).subscribe({
+      next: (data) => {
+        console.log('Risultati della ricerca:', data.results);
+        this.searchResults = data.results;
+      },
+      error: (err) => console.log('Errore nella ricerca del film'),
+    });
+  }
 
 
 
-    }
+}
 

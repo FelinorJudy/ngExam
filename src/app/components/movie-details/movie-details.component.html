@@ -2,13 +2,18 @@
 <div [ngStyle]="{'background-image': 'url(' + backdropUrl + ')'}"  class="top-info">
   
   <div class="top-info__content">
-    <h1 [ngStyle]="{'font-size': getFontSize(title)}" class="movie-title"> {{ title }} </h1>
-    <p>{{ tagline }}</p>
-    <p>{{ overview }}</p>
+    <div class="movie-title">
+      <h1 [ngStyle]="{'font-size': getFontSize(title)}" class="movie-title"> {{ title }} </h1>
+      <button [routerLink]="['/watching', movieId]">Guarda il trailer</button>
+    </div>
+    <p class="movie-tagline">{{ tagline }}</p>
+    <p class="movie-overview">{{ overview }}</p>
     <div>
       <p>Rating: {{ vote_average }}</p>
+    </div>
+    <div class="movie-details-buttons">
       <button (click)="toggleVisto()">
-      {{ visto ? '✅ Già visto' : '👀 Segna come visto' }}
+      {{ visto ? '✅ Già visto' : 'Segna come visto' }}
     </button>
     <button (click)="toggleFavorite()">
       {{ favorite ? '✅ Preferiti' : 'Aggiungi ai preferiti' }}

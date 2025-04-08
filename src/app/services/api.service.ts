@@ -43,4 +43,8 @@ export class apiService {
     const movieRequests = movieIds.map((id) => this.getInfoFromMovie(id));
     return forkJoin(movieRequests);
   }
+
+  getTrailerById(movieId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/movie/${movieId}/videos?language=en-US`, { headers: this.headers })
+  }
 }
