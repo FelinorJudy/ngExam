@@ -1,27 +1,33 @@
-import { Injectable } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgIf, NgFor } from '@angular/common';
+import { apiService } from '../../services/api.service';
+import { StorageService } from '../../services/storage.service';
 
-@Injectable({ providedIn: 'root' })
-export class FavoritesService {
-  private storageKey = 'favorites';
 
-  getFavorites(): any[] {
-    return JSON.parse(localStorage.getItem(this.storageKey) || '[]');
+
+@Component({
+  selector: 'app-watched-movies',
+  standalone: true,
+  imports: [NgIf, NgFor],
+  templateUrl: './favorite-movies.component.html',
+  styleUrls: ['./favorite-movies.component.css']
+})
+export class FavoriteMoviesComponent implements OnInit {
+  favFilm: any[] = [];
+
+  constructor(private apiService: apiService, private storageService: StorageService) {}
+
+  removeFromFavorite(movieId: string): void {
+    this.storageService.toggleFavoriteFilm(movieId);
+    this.favFilm = this.favFilm.filter(movie => movie.id !== movieId);
   }
 
-  addFavorite(item: any): void {
-    const favorites = this.getFavorites();
-    if (!favorites.find(fav => fav.id === item.id)) {
-      favorites.push(item);
-      localStorage.setItem(this.storageKey, JSON.stringify(favorites));
+  ngOnInit(): void {
+    const movieIds = this.storageService.getFavoriteFilms() || [];
+    if (movieIds.length > 0) {
+      this.apiService.getMoviesByIds(movieIds).subscribe((movies: any[]) => {
+        this.favFilm = movies || [];
+      });
     }
-  }
-
-  removeFavorite(id: number): void {
-    const updated = this.getFavorites().filter(fav => fav.id !== id);
-    localStorage.setItem(this.storageKey, JSON.stringify(updated));
-  }
-
-  isFavorite(id: number): boolean {
-    return this.getFavorites().some(fav => fav.id === id);
   }
 }

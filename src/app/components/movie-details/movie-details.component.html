@@ -6,6 +6,10 @@
     <button (click)="toggleVisto()">
       {{ visto ? '✅ Già visto' : '👀 Segna come visto' }}
     </button>
+    <button (click)="toggleFavorite()">
+      {{ favorite ? '✅ Preferiti' : 'Aggiungi ai preferiti' }}
+    </button>
+    
       <p>{{title}} </p>
       <p>{{overview}} </p>
       <p>{{release_date}} </p>

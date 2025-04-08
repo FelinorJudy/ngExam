@@ -1,30 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { apiService } from '../../services/api.service';
-import { StorageService } from '../../services/storage.service';
-import { CommonModule } from '@angular/common';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-favorite-movies',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './favorite-movies.component.html',
-  styleUrls: ['./favorite-movies.component.css']
-})
-export class FavoriteMoviesComponent implements OnInit {
-  favoriteMovies: any[] = [];
+import { FavoriteMoviesComponent } from './favorite-movies.component';
 
-  constructor(private apiService: apiService, private storageService: StorageService) {}
+describe('WatchedMoviesComponent', () => {
+  let component: FavoriteMoviesComponent;
+  let fixture: ComponentFixture<FavoriteMoviesComponent>;
 
-  ngOnInit(): void {
-    const movieIds = this.storageService.getFavoriteMovies();
-    if (movieIds.length > 0) {
-      this.apiService.getMoviesByIds(movieIds).subscribe((movies: any[]) => {
-        this.favoriteMovies = movies;
-      });
-    }
-  }
-  removeFromFavorites(movieId: string): void {
-    this.storageService.toggleFilmPreferito(movieId);
-    this.favoriteMovies = this.favoriteMovies.filter(movie => movie.id !== movieId);
-  }
-}
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [FavoriteMoviesComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(FavoriteMoviesComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
