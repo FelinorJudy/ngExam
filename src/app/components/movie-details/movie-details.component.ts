@@ -1,14 +1,14 @@
 import { Component, OnInit} from '@angular/core';
 import { apiService } from '../../services/api.service';
 import { StorageService } from '../../services/storage.service';
-import { ActivatedRoute, ParamMap} from '@angular/router';
+import { ActivatedRoute, ParamMap, RouterLink} from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
-  imports  : [CommonModule],
+  imports  : [CommonModule, RouterLink],
 })
 export class MovieDetailsComponent implements OnInit {
   param: string | null = '';
@@ -21,6 +21,7 @@ export class MovieDetailsComponent implements OnInit {
   runtime: number = 0;
   vote_average: number = 0;
   backdropUrl: string = '';
+  movieId: string = '';
 
   constructor(
     private apiService: apiService,
@@ -44,6 +45,7 @@ export class MovieDetailsComponent implements OnInit {
           this.runtime = data.runtime;
           this.vote_average = data.vote_average;
           this.backdropUrl = `https://image.tmdb.org/t/p/original${data.backdrop_path}`;
+          this.movieId = data.id;
         });
       }
     });

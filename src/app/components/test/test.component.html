@@ -2,14 +2,15 @@
 <!-- Contenuto principale -->
 <div class="random-movie ">
   <div *ngIf="randomMovie">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + randomMovie.poster_path" alt="Copertina del film"
-             class="img-fluid  rounded shadow" style="max-height: 50vh; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);" />
-    <h3 class="mb-2 fs-3">{{ randomMovie.title }}</h3>
+    <a [routerLink]="['/movie', randomMovieId]">
+      <img [src]="'https://image.tmdb.org/t/p/original' + randomMovie.poster_path" alt="Copertina del film" class="img-fluid  rounded shadow movie-poster" style="max-height: 50vh; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);" />
+    </a>
+      <h3 class="mb-2 fs-3">{{ randomMovie.title }}</h3>
   </div>
 </div>
 <div class="watchnow">
   <p class="fw-bold fs-5 text-white">Guarda ora il miglior film consigliato per te!</p>
-  <button [routerLink]="['/movie',randomMovieId]" class="btn btn-danger mt-2" >Guarda Ora</button>
+  <button [routerLink]="['/watching',randomMovieId]" class="btn btn-danger mt-2" >Guarda Ora</button>
 </div>
 
 <!--SideBar-->
