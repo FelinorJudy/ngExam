@@ -97,6 +97,7 @@
   height: auto;
   transition: background-color 0.2s ease, border-color 0.2s ease;
   min-width: 80px;
+  cursor: pointer;
 }
 .button-group .btn:hover {
   background-color: #777;

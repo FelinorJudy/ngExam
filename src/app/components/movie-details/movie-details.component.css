@@ -19,7 +19,7 @@
   z-index: 2;
   color: white;
   position: absolute;
-  top: 65%;
+  top: 55%;
   padding-left: 5%;
 }
 
@@ -35,7 +35,7 @@
   button{
     height: auto;
     margin-left: 1rem;
-    background-color: #e50914;
+    background-color: red;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -46,14 +46,14 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #f40612;
+      background-color: darkred;
     }
   }
 }
 
 p {
   margin: 0;
-  margin-bottom: 1; 
+  margin-bottom: 1;
   width: 40%;
 }
 
@@ -77,10 +77,10 @@ p {
   justify-content: space-between;
   margin-top: 1rem;
 
-  button{
+ button{
     width: 30%;
     min-width: 160px;
-    background-color: #e50914;
+    background-color: red;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -91,7 +91,10 @@ p {
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #f40612;
+      background-color: darkred;
     }
   }
+  .i{
+    vertical-align: middle;
+}
 }
