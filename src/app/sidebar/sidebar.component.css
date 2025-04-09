@@ -1,0 +1,113 @@
+.sidebar {
+  z-index: 3;
+  width: 170px;
+  background-color: #222;
+  color: white;
+  position: fixed;
+  top: 40px;
+  left: -150px;
+  /* Nasconde il menu inizialmente */
+  bottom: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s ease, width 0.3s ease;
+  /* Aggiunge una transizione fluida */
+  overflow-y: hidden;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.sidebar:hover {
+  left: 0;
+  width: 180px;
+}
+
+.sidebar .category-label {
+  position: absolute;
+  top: 50%;
+  right: -30%;
+  transform: rotate(270deg);
+  font-size: xx-large;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 2px;
+}
+
+.sidebar:hover .category-label {
+  opacity: 0;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+ul {
+  list-style-type: none;
+  /* Rimuovi i puntini di elenco */
+  padding: 0;
+  height: 100%;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  /* Rimuovi i puntini di elenco */
+  padding: 0;
+  height: 100%;
+  flex-grow: 1;
+  overflow-y: scroll;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.3s ease, trasform 0.3s ease;
+}
+
+.sidebar:hover ul {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+ul::-webkit-scrollbar {
+  width: 0px;
+  /* Imposta la larghezza della scrollbar a 0px */
+  background: transparent;
+  /* Rende il background trasparente */
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: transparent;
+  /* Rende il "thumb" della scrollbar trasparente */
+}
+
+ul::-webkit-scrollbar-track {
+  background: transparent;
+  /* Rende il "track" della scrollbar trasparente */
+}
+
+li {
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  /* Cursore a mano quando si passa sopra un genere */
+  border-radius: 4px;
+  /* Aggiungi un bordo arrotondato per gli elementi */
+  font-size: 25px;
+}
+
+li:hover {
+  background-color: #555;
+  /* Cambia colore di sfondo al passaggio del mouse */
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  font-size: medium;
+  letter-spacing: 2px;
+}
+
+.sidebar a:hover {
+  color: #ddd;
+  border-radius: 5px;
+}

@@ -26,6 +26,12 @@
 }
 
 /* Barra di ricerca */
+.form-control{
+  padding: 6px 6px;
+}
+.search-container{
+  margin-left:1%;
+}
 
 .search-results {
   position: absolute;
@@ -47,7 +53,7 @@
 .search-results li {
   padding: 10px;
   border-bottom: 1px solid #ddd;
-  font-size: small;
+  font-size: medium;
 }
 
 .search-results li:last-child {
@@ -64,7 +70,7 @@
   display: block;
 }
 
-/* bottoni Preferiti e GiaVisti */
+/* bottoni Preferiti, GiaVisti e Home */
 
 .button-group {
   position: absolute;
@@ -79,6 +85,7 @@
 }
 
 .button-group .btn {
+  flex: 1 1 auto;
   border-radius: 0;
   background-color: #333;
   color: white;
@@ -89,6 +96,7 @@
   white-space: nowrap;
   height: auto;
   transition: background-color 0.2s ease, border-color 0.2s ease;
+  min-width: 80px;
 }
 .button-group .btn:hover {
   background-color: #777;
