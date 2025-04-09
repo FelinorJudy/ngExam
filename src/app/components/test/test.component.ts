@@ -3,7 +3,6 @@ import { apiService } from '../../services/api.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NavbarComponent } from '../../navbar/navbar.component';
 
 @Component({
   selector: 'app-test',
@@ -13,7 +12,6 @@ import { NavbarComponent } from '../../navbar/navbar.component';
   styleUrl: './test.component.css',
 })
 export class TestComponent implements OnInit {
-  genres: any[] = [];
   randomMovie: any;
   search: string = '';
   searchResults: any[] = [];
@@ -24,13 +22,6 @@ export class TestComponent implements OnInit {
   constructor(private apiService: apiService) { }
 
   ngOnInit(): void {
-    this.apiService.getGenres().subscribe({
-      next: (data) => {
-        this.genres = data.genres;
-      },
-      error: (err) => console.log('Errore nel recupero dei generi'),
-    });
-
     this.apiService.getTrendingMovies().subscribe({
       next: (data) => {
         // Seleziona un film random dalla lista dei film di tendenza
@@ -50,10 +41,6 @@ export class TestComponent implements OnInit {
     });
 
   }
-  onGenreClick(genreId: number) {
-    console.log('Genere selezionato:', genreId);
-  }
-
   onSearch() {
     console.log('Ricerca:', this.search);
     this.apiService.getMovieByTitle(this.search).subscribe({

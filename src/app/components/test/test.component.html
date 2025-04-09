@@ -1,27 +1,36 @@
-<div [ngStyle]="{'background-image': 'url(' + backdropUrl + ')'}" class="body">
-<!-- Contenuto principale -->
-<div class="random-movie ">
-  <div *ngIf="randomMovie">
-    <a [routerLink]="['/movie', randomMovieId]">
-      <img [src]="'https://image.tmdb.org/t/p/original' + randomMovie.poster_path" alt="Copertina del film" class="img-fluid  rounded shadow movie-poster" style="max-height: 50vh; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);" />
-    </a>
+<div
+  [ngStyle]="{ 'background-image': 'url(' + backdropUrl + ')' }"
+  class="body"
+>
+  <!-- Contenuto principale -->
+  <div class="random-movie">
+    <div *ngIf="randomMovie">
+      <a [routerLink]="['/movie', randomMovieId]">
+        <img
+          [src]="
+            'https://image.tmdb.org/t/p/original' + randomMovie.poster_path
+          "
+          alt="Copertina del film"
+          class="img-fluid rounded shadow movie-poster"
+          style="
+            max-height: 50vh;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+          "
+        />
+      </a>
       <h3 class="mb-2 fs-3">{{ randomMovie.title }}</h3>
+    </div>
   </div>
-</div>
-<div class="watchnow">
-  <p class="fw-bold fs-5 text-white">Guarda ora il miglior film consigliato per te!</p>
-  <button [routerLink]="['/watching',randomMovieId]" class="btn btn-danger mt-2" >Guarda Ora</button>
-</div>
-
-<!--SideBar-->
-<div class="sidebar ">
-  <p class="category-label">Categorie</p>
-  <ul>
-    @for(genre of genres; track genre.id) {
-    <li>
-      <a [routerLink]="['/movies', genre.id]"> {{ genre.name }} </a>
-    </li>
-    }
-  </ul>
-</div>
+  <div class="watchnow">
+    <p class="fw-bold fs-5 text-white">
+      Guarda ora il miglior film consigliato per te!
+    </p>
+    <button
+      [routerLink]="['/watching', randomMovieId]"
+      class="btn btn-danger mt-2"
+    >
+      Guarda Ora
+    </button>
+  </div>
 </div>

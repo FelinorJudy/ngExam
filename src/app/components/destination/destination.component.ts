@@ -1,7 +1,6 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { apiService } from '../../services/api.service';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-destination',

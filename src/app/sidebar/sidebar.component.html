@@ -1,0 +1,10 @@
+<div class="sidebar ">
+  <p class="category-label">C a t e g o r i e</p>
+  <ul>
+    @for(genre of genres; track genre.id) {
+    <li>
+      <a [routerLink]="['/movies', genre.id]"> {{ genre.name }} </a>
+    </li>
+    }
+  </ul>
+</div>
