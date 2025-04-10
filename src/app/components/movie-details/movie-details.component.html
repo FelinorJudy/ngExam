@@ -1,10 +1,10 @@
 
 <div [ngStyle]="{'background-image': 'url(' + backdropUrl + ')'}"  class="top-info">
-  
+
   <div class="top-info__content">
     <div class="movie-title">
       <h1 [ngStyle]="{'font-size': getFontSize(title)}" class="movie-title"> {{ title }} </h1>
-      <button [routerLink]="['/watching', movieId]">Guarda il trailer</button>
+      <button class="play" [routerLink]="['/watching', movieId]">Guarda il trailer  <i class="fas fa-play"></i></button>
     </div>
     <p class="movie-tagline">{{ tagline }}</p>
     <p class="movie-overview">{{ overview }}</p>
