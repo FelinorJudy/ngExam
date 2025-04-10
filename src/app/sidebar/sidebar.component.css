@@ -90,7 +90,6 @@ li {
   /* Cursore a mano quando si passa sopra un genere */
   border-radius: 4px;
   /* Aggiungi un bordo arrotondato per gli elementi */
-  font-size: 25px;
 }
 
 li:hover {
@@ -103,7 +102,7 @@ li:hover {
   text-decoration: none;
   display: block;
   padding: 10px;
-  font-size: medium;
+  font-size: x-large;
   letter-spacing: 2px;
 }
 
