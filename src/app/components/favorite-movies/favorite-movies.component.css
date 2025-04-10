@@ -1,0 +1,53 @@
+.favorite-movies {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  
+  .movie-item {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    position: relative;
+    padding-top: 40px;
+  }
+  
+  .remove-icon {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    color: #ff4444;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    z-index: 2;
+    line-height: 1;
+    transition: transform 0.2s, color 0.2s;
+  }
+  
+  .remove-icon:hover {
+    color: #ff0000;
+    transform: scale(1.2);
+  }  
+  
+  .movie-item img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  

@@ -1,20 +1,15 @@
 <div class="favorite-movies">
-    <h2>🎬 Film Preferiti</h2>
-    <div *ngIf="favFilm.length === 0">
-      <p>Non hai ancora segnato nessun film come visto.</p>
-    </div>
-    <div *ngFor="let movie of favFilm" class="movie-item">
-      <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" alt="{{ movie.title }}">
-      
-      <h3>{{ movie.title }}</h3>
-      <button (click)="removeFromFavorite(movie.id)">❌ Rimuovi</button>
-      <div *ngIf="favFilm.length > 0">
+  <h2>Film Preferiti</h2>
 
-      </div>
-      <div *ngIf="favFilm.length === 0">
-        Nessun film visto.
-      </div>
-      
+  <div *ngIf="favFilm.length === 0">
+    <p>Non hai ancora segnato nessun film come preferito.</p>
+  </div>
+
+  <div *ngIf="favFilm.length > 0" class="movie-grid">
+    <div *ngFor="let movie of favFilm" class="movie-item">
+      <span class="remove-icon" (click)="removeFromFavorite(movie.id)">-</span>
+      <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" alt="{{ movie.title }}">
+      <h3>{{ movie.title }}</h3>
     </div>
-  </div> 
-  
+  </div>
+</div>
