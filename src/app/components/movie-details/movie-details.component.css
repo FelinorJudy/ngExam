@@ -46,7 +46,6 @@
     height: auto;
     margin-left: 1rem;
     background-color: red;
-    background-color: red;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -57,7 +56,6 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: darkred;
       background-color: darkred;
     }
   }
@@ -87,14 +85,12 @@ p {
 .movie-details-buttons {
   display: flex;
   max-width: 40%;
-  justify-content: space-between;
+  gap: 40%;
   margin-top: 1rem;
 
  button{
- button{
     width: 30%;
     min-width: 160px;
-    background-color: red;
     background-color: red;
     color: white;
     border: none;
@@ -107,12 +103,7 @@ p {
 
     &:hover {
       background-color: darkred;
-      background-color: darkred;
     }
-  }
-  .i{
-    vertical-align: middle;
-}
   }
   .i{
     vertical-align: middle;
