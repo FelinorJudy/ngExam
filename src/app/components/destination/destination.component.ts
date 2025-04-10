@@ -1,6 +1,6 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { apiService } from '../../services/api.service';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-destination',
@@ -9,8 +9,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './destination.component.html',
   styleUrl: './destination.component.css'
 })
-export class DestinationComponent implements OnInit {
-  @Input() genreId!: string
+export class DestinationComponent implements OnInit, OnChanges {
+  @Input({required: true}) genreId!: string
   movies: any = []
   currentPage: number = 1
   isLoading: boolean = false
@@ -19,6 +19,15 @@ export class DestinationComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMovies()
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['genreId']) {
+      this.genreId = changes['genreId'].currentValue;
+      this.currentPage = 1; // 
+      this.movies = []; 
+      this.loadMovies(); 
+    }
   }
 
   loadMovies(): void {
